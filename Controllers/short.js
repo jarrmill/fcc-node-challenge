@@ -4,7 +4,7 @@ const Short = require("../Models/short");
 exports.shortener = function(req, res, next){
   var originalUrl = req.params[0];
   if (validUrl.isUri(originalUrl)){
-    const root_url = "localhost:8080"
+    const root_url = "https://js-fcc-node-challenges.herokuapp.com/";
     //2. Check if URL is already in database
     urlFetcher(originalUrl).then(urlObj => {
       //3. If URL exists, send new url
@@ -53,7 +53,6 @@ exports.redirect = function(req, res, next){
     }
   });
 }
-//taken from Mohesh Mohan at https://stackoverflow.com/questions/1303872/trying-to-validate-url-using-javascript
 function urlFetcher(url){
   return new Promise(function(resolve, reject){
     Short.find({originalUrl:url}, function (err, urlObj){
