@@ -61,6 +61,9 @@ app.get('/public', function (req, res) {
 
 //URL SHORTENER
 //to shorten a url
+app.get("/", function (req, res){
+  res.send("Hello! Welcome to my page.");
+})
 app.get("/shortener/*", jsonParser, Short.shortener);
 //already have shortened url
 app.get("/short/*", jsonParser, Short.redirect)
